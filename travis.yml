@@ -1,0 +1,35 @@
+language: cpp
+
+sudo: false
+
+compiler:
+  - gcc
+
+env:
+  matrix:
+    - COMPILER=g++-5 CCOMPILER=gcc-5
+
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - g++-5
+      - libssh2-1-dev
+      - libssl-dev
+      - libsslcommon2-dev
+      - libcurl4-openssl-dev
+      - libmysqlcppconn-dev
+
+before_script:
+  - export CXX=$COMPILER CC=$CCOMPILER
+  - cmake --version
+  - mkdir build
+  - cd build
+  - cmake -LAH ..
+
+script:
+  - make VERBOSE=1
+
+notifications:
+  slack: ra-leadership:chIuc5mdb4fPiAx9t4TPj0Rr
