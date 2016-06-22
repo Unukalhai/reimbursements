@@ -22,13 +22,13 @@ matrix:
           packages:
             - g++-5
       env: COMPILER=g++-5
-    - compiler: clang
+    - compiler: clang # clang 3.7.0 manual install
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
       env:
-        - COMPILER=clang++-3.7
+        - COMPILER=clang++
         - LLVM_VERSION=3.7.0
         - LLVM_ARCHIVE_PATH=$HOME/clang+llvm.tar.xz
 
