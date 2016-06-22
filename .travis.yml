@@ -40,14 +40,14 @@ matrix:
         - LLVM_VERSION=3.5.0
         - LLVM_ARCHIVE_PATH=$HOME/clang+llvm.tar.xz
     # Xcode 6.4
-    - os: osx
-      env: COMPILER=clang++ CCOMPILER=clang
-      osx_image: xcode6.4
+#    - os: osx
+#      env: COMPILER=clang++ CCOMPILER=clang
+#      osx_image: xcode6.4
 
     # Xcode 7
-    - os: osx
-      env: COMPILER=clang++ CCOMPILER=clang BREW_CMAKE=ON
-      osx_image: xcode7
+#    - os: osx
+#      env: COMPILER=clang++ CCOMPILER=clang BREW_CMAKE=ON
+#      osx_image: xcode7
 
 allow_failures:
   - env: COMPILER=clang++ CCOMPILER=clang LINUX_CLANG=1
