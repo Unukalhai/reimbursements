@@ -4,7 +4,6 @@ sudo: false
 
 compiler:
   - gcc
-  - clang
 
 env:
   matrix:
@@ -41,7 +40,6 @@ addons:
     sources: &sources
       - ubuntu-toolchain-r-test
     packages:
-      - g++-5
       - libssh2-1-dev
       - libssl-dev
       - libcurl4-openssl-dev
@@ -50,10 +48,13 @@ addons:
       - cmake-data
 
 before_script:
-  - wget http://llvm.org/releases/$LLVM_VERSION/clang+llvm-$LLVM_VERSION-x86_64-linux-gnu-ubuntu-14.04.tar.xz -O $LLVM_ARCHIVE_PATH
-  - mkdir $HOME/clang+llvm
-  - tar xf $LLVM_ARCHIVE_PATH -C $HOME/clang+llvm --strip-components 1
-  - export PATH=$HOME/clang+llvm/bin:$PATH
+  - 
+    if [ -z "$LLVM_ARCHIVE_PATH" ]; then
+      wget http://llvm.org/releases/$LLVM_VERSION/clang+llvm-$LLVM_VERSION-x86_64-linux-gnu-ubuntu-14.04.tar.xz -O $LLVM_ARCHIVE_PATH
+      mkdir $HOME/clang+llvm
+      tar xf $LLVM_ARCHIVE_PATH -C $HOME/clang+llvm --strip-components 1
+      export PATH=$HOME/clang+llvm/bin:$PATH
+    fi
   - export CXX=$COMPILER CC=$CCOMPILER
   - cmake --version
   - mkdir build
