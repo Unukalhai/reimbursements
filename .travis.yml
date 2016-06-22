@@ -32,19 +32,10 @@ matrix:
         - LLVM_VERSION=3.7.0
         - LLVM_ARCHIVE_PATH=$HOME/clang+llvm.tar.xz
 
-addons:
-  apt:
-    sources:
-      - george-edison55/cmake-3.x # cmake 3.2.3
-    packages:
-      - libssh2-1-dev
-      - libssl-dev
-      - libcurl4-openssl-dev
-      - libmysqlcppconn-dev
-      - cmake
-      - cmake-data
-
 before_script:
+  - sudo add-apt-repository ppa:george-edison55/cmake-3.x
+  - sudo apt-get update -q
+  - sudo apt-get install libssh2-1-dev libssl-dev libcurl4-openssl-dev libmysqlcppconn-dev cmake cmake-data -y
   - 
     if [ -z "$LLVM_ARCHIVE_PATH" ]; then
       wget http://llvm.org/releases/$LLVM_VERSION/clang+llvm-$LLVM_VERSION-x86_64-linux-gnu-ubuntu-14.04.tar.xz -O $LLVM_ARCHIVE_PATH;
