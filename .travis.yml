@@ -4,9 +4,6 @@ language: cpp
 sudo: required
 dist: trusty
 
-addons:
-  ssh_known_hosts: 5.135.164.103
-
 matrix:
   include:
     - compiler: gcc
@@ -78,8 +75,7 @@ script:
 deploy:
   provider: script
   skip_cleanup: true
-  script:
-    - ssh-keyscan -t rsa,dsa,ecdsa -H 5.135.164.103 >> $HOME/.ssh/known_hosts &&  rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build $travis_deploy_username@$travis_deploy_hostname:$TRAVIS_BUILD_ID
+  script: .travis-deploy.sh
   on:
     branch: master
 notifications:
