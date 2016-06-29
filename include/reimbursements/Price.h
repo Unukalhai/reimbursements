@@ -1,6 +1,6 @@
 #include <reimbursements/Db.h>
 
-#include <crest/crest.h>
+#include <crest/Crest.h>
 
 #include <sstream>
 
@@ -23,7 +23,7 @@ public:
 
 private:
     Db database;
-    crest cr;
+    Crest cr;
     list<item> items;
 
     void fillItems();
