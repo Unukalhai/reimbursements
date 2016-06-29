@@ -78,13 +78,13 @@ void Price::updatePrice()
 
 void Price::fillInsurances(int *ids)
 {
-    list<crest::insurance> insurances;
+    list<Crest::insurance> insurances;
     int s = sizeof(ids) / sizeof(int); //maybe wrong...
     insurances = cr.getInsurance(ids, s, "Platinum");
     for(list<Price::item>::iterator item = Price::items.begin(); item != Price::items.end(); ++item)
     {
         Price::item & it(*item);
-        for(crest::insurance insurance : insurances)
+        for(Crest::insurance insurance : insurances)
         {
             if(insurance.id == it.id)
             {
