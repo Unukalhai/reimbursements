@@ -50,8 +50,6 @@ set(REIMBURSEMENTS_SOURCE_LIB
 
         ${REIMBURSEMENTS_ID}/reimbursements/Price.h
         ${REIMBURSEMENTS_ID}/reimbursements/Db.h
-
-        ${CMAKE_CURRENT_SOURCE_DIR}/config.ini
         )
 
 add_executable(Reimbursements ${REIMBURSEMENTS_SOURCE_LIB})
