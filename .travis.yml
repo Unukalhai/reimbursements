@@ -52,7 +52,7 @@ matrix:
 #      env: COMPILER=clang++ CCOMPILER=clang BREW_CMAKE=ON
 #      osx_image: xcode7
 
-#allow_failures:
+##allow_failures:
 #  - env: COMPILER=clang CCOMPILER=clang LINUX_CLANG=1
 
 before_script:
