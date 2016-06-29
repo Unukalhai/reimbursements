@@ -10,6 +10,7 @@ set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib)
 
 set(REIMBURSEMENTS_ID ${CMAKE_CURRENT_SOURCE_DIR}/include CACHE INTERNAL "")
 set(REIMBURSEMENTS_SD ${CMAKE_CURRENT_SOURCE_DIR}/src)
+set(INI_ID ${CMAKE_CURRENT_SOURCE_DIR}/opt/ini/src)
 
 if(NOT ${CMAKE_VERSION} LESS 3.2)
     set(CMAKE_CXX_STANDARD 11)
@@ -49,10 +50,12 @@ set(REIMBURSEMENTS_SOURCE_LIB
 
         ${REIMBURSEMENTS_ID}/reimbursements/price.h
         ${REIMBURSEMENTS_ID}/reimbursements/db.h
+
+        ${CMAKE_CURRENT_SOURCE_DIR}/config.ini
         )
 
 add_executable(Reimbursements ${REIMBURSEMENTS_SOURCE_LIB})
 target_link_libraries(Reimbursements libmysqlcppconn.so)
 target_link_libraries(Reimbursements crest)
 target_link_libraries(Reimbursements ${CREST_LIBRARIES})
-include_directories(${CREST_ID})
+include_directories(${CREST_ID} ${INI_ID})

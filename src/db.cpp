@@ -1,9 +1,18 @@
 #include <reimbursements/db.h>
 
 db::db() {
+    std::stringstream ss;
+    std::ifstream file("config.ini");
+    if (file.is_open()) {
+        ss << file.rdbuf();
+        file.close();
+    }
+    else throw std::runtime_error("Unable to open configuration file");
+    INI::Parser config(ss);
+
     db::driver = get_driver_instance();
-    db::con = db::driver->connect("tcp://127.0.0.1:3306", "root", "");
-    db::con->setSchema("auth");
+    db::con = db::driver->connect(config.top()["hostname"], config.top()["username"], config.top()["password"]);
+    db::con->setSchema(config.top()["database"]);
     db::stmt = con->createStatement();
 }
 
