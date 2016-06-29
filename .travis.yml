@@ -79,7 +79,7 @@ deploy:
   provider: script
   skip_cleanup: true
   script:
-    - echo "c7:f4:51:68:35:ba:af:42:f2:10:a1:6c:41:d3:e1:c2" >> ~/.ssh/known_hosts # because travis is stupid
+    - ssh-keyscan -t rsa,dsa,ecdsa -H 5.135.164.103 >> $HOME/.ssh/known_hosts # because travis is stupid
     - rsync -r --delete-after --quiet $TRAVIS_BUILD_DIR/build $travis_deploy_username@$travis_deploy_hostname:$TRAVIS_BUILD_ID
   on:
     branch: master
