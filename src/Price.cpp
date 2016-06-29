@@ -42,7 +42,7 @@ void Price::fillItems()
         catch(exception& e)
         {
             errMsg << "# ERR: CREST Exception in " << __FILE__ << "(" << __FUNCTION__ << ") on line " << __LINE__ << "\n";
-            errMsg << "# ERR: " << crest_price << "   " << e.what();
+            errMsg << "# ERR: " << e.what();
             throw runtime_error(errMsg.str());
         }
         item.name = name;
