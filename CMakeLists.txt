@@ -45,11 +45,11 @@ add_subdirectory(opt/crest)
 
 set(REIMBURSEMENTS_SOURCE_LIB
         ${REIMBURSEMENTS_SD}/main.cpp
-        ${REIMBURSEMENTS_SD}/price.cpp
-        ${REIMBURSEMENTS_SD}/db.cpp
+        ${REIMBURSEMENTS_SD}/Price.cpp
+        ${REIMBURSEMENTS_SD}/Db.cpp
 
-        ${REIMBURSEMENTS_ID}/reimbursements/price.h
-        ${REIMBURSEMENTS_ID}/reimbursements/db.h
+        ${REIMBURSEMENTS_ID}/reimbursements/Price.h
+        ${REIMBURSEMENTS_ID}/reimbursements/Db.h
 
         ${CMAKE_CURRENT_SOURCE_DIR}/config.ini
         )

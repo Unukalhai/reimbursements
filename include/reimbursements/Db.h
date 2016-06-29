@@ -1,19 +1,23 @@
-#include <sstream>
+#include <ini.hpp>
 
 #include <mysql_connection.h>
 #include <cppconn/driver.h>
 #include <cppconn/exception.h>
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
-#include <ini.hpp>
 
-class db {
+#include <sstream>
 
+using namespace std;
+
+class Db
+{
 public:
-    db();
-    ~db();
-    sql::ResultSet* query(std::string query);
-    void execute(std::string query);
+    Db();
+    ~Db();
+    sql::ResultSet* query(string query);
+    void execute(string query);
+
 private:
     sql::Driver *driver;
     sql::Connection *con;

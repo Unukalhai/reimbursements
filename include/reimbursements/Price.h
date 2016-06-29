@@ -1,13 +1,19 @@
-#include <sstream>
-#include <reimbursements/db.h>
+#include <reimbursements/Db.h>
+
 #include <crest/crest.h>
 
-class price {
+#include <sstream>
+
+using namespace std;
+
+class Price
+{
 public:
-    struct item{
+    struct item
+    {
         int id = 0, type;
         unsigned int price = 0, insurance_cost = 0, insurance_payout = 0;
-        std::string name;
+        string name;
         /* type = 0 - module
          * type = 1 - subcapital
          * type = 2 - capital */
@@ -16,9 +22,9 @@ public:
     void updatePrice();
 
 private:
-    db database;
+    Db database;
     crest cr;
-    std::list<item> items;
+    list<item> items;
 
     void fillItems();
     void fillInsurances(int* ids);
