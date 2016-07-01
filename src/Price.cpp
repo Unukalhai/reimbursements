@@ -49,7 +49,7 @@ void Price::fillItems()
         item.price = crest_price;
         Price::items.push_back(item);
     }
-    Price::fillInsurances(&insurance_id[0]);
+    Price::fillInsurances(insurance_id.data(), insurance_id.size());
 }
 
 void Price::updatePrice()
@@ -60,7 +60,7 @@ void Price::updatePrice()
     {
         for(Price::item item : Price::items)
         {
-            string query_insurance = (item.type == 1 || item.type == 2) ? ", insurance_cost='"
+            string query_insurance = (item.type == 2 || item.type == 3) ? ", insurance_cost='"
                 + to_string(item.insurance_cost) + "', insurance_payout='" +  to_string(item.insurance_payout)
                 + "'" : "";
             string query = "UPDATE prices SET name='" + item.name + "', Price='" + to_string(item.price) + "'"
@@ -76,11 +76,10 @@ void Price::updatePrice()
     }
 }
 
-void Price::fillInsurances(int *ids)
+void Price::fillInsurances(int *ids, int size)
 {
     list<Crest::insurance> insurances;
-    int s = sizeof(ids) / sizeof(int); //maybe wrong...
-    insurances = cr.getInsurance(ids, s, "Platinum");
+    insurances = cr.getInsurance(ids, size, "Platinum");
     for(list<Price::item>::iterator item = Price::items.begin(); item != Price::items.end(); ++item)
     {
         Price::item & it(*item);

@@ -27,5 +27,5 @@ private:
     list<item> items;
 
     void fillItems();
-    void fillInsurances(int* ids);
+    void fillInsurances(int* ids, int size);
 };
