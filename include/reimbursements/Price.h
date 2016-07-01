@@ -14,9 +14,9 @@ public:
         int id = 0, type;
         unsigned int price = 0, insurance_cost = 0, insurance_payout = 0;
         string name;
-        /* type = 0 - module
-         * type = 1 - subcapital
-         * type = 2 - capital */
+        /* type = 0, 1 - module
+         * type = 2 - subcapital
+         * type = 3 - capital */
     };
 
     void updatePrice();

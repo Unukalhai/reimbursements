@@ -23,14 +23,14 @@ void Price::fillItems()
         item.id = stoi(i_id);
         item.type = stoi(i_type);
         string name = res->getString("name");
-        if(item.type == 1 || item.type == 2) insurance_id.push_back(item.id);
+        if(item.type == 2 || item.type == 3) insurance_id.push_back(item.id);
         unsigned int crest_price = 0;
         try
         {
             if (name == "") name = Price::cr.getName(item.id);
             /* 10000002 - The Forge
              * 60003760 - Jita IV - Moon 4 - Caldari Navy Assembly Plant */
-            if(item.type == 2) //if capital -> search in region
+            if(item.type == 3) //if capital -> search in region
             {
                 crest_price = Price::cr.getMarketPrice(item.id, 10000002 , "sell", 0);
             }
